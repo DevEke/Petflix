@@ -16,7 +16,7 @@ function NavBar(props) {
         }
     }
 
-    const { clearUser, closeTrailer, setMovie, handleSearch, query} = props;
+    const { clearUser, handleSearch, query} = props;
 
     return (
         <div className="nav-bar__container padding">
