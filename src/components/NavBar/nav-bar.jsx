@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 import logo from '../../img/petflix-logo.png';
 import { IoSearch, IoCaretDown, IoMenu } from 'react-icons/io5';
 import './nav-bar.scss';
@@ -15,18 +16,19 @@ function NavBar(props) {
         }
     }
 
-    const { clearUser } = props;
+    const { clearUser, closeTrailer, setMovie, handleSearch, query} = props;
 
     return (
         <div className="nav-bar__container padding">
             <div className="nav-bar__left-menu">
                 <IoMenu className="mobile-hamburger__menu"/>
-                <img className="petflix-logo" src={logo} alt=""/>
+                <Link to="/"><img className="petflix-logo" src={logo} alt=""/></Link>
+                
             </div>
             <div className="nav-bar__right-menu">
                 <div className="nav-bar__search-container">
                     <IoSearch onClick={toggleSearch} className={ searchbar ? "nav-bar__icon open" : "nav-bar__icon"}/>
-                    {searchbar ? <input className="nav-bar__search-input" placeholder="Titles" type="text"/> : null}
+                    {searchbar ? <input onChange={handleSearch} value={query} className="nav-bar__search-input" placeholder="Titles" type="text"/> : null}
                 </div>
                 <div className="nav-bar__profile-dropdown">
                     <div className="nav-bar__profile-square"/>

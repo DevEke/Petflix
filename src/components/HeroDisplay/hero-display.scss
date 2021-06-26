@@ -26,8 +26,8 @@
         }
 
         .hero-display__movie-logo {
-            max-height: 200px;
-            max-width: 500px;
+            max-height: 175px;
+            max-width: 450px;
             margin-bottom: 8px;
         }
 
@@ -47,24 +47,6 @@
         .hero-display__control-buttons {
             display: flex;
             align-items: center;
-
-            .hero-display__button {
-                display: flex;
-                align-items: center;
-                padding: 12px 24px;
-                font-weight: 700;
-                font-size: 18px;
-                margin-right: 12px;
-                border-radius: 3px;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.2s;
-
-                .icon {
-                    margin-right: 8px;
-                    height: 24px;
-                }
-            }
 
             .more-info {
                 color: white;

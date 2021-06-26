@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './movie-row-list.scss';
 import MovieRow from '../MovieRow/movie-row'; 
+import MobileDisplay from '../Mobile-Display/mobile-display';
 
 class MovieRowList extends Component {
 
@@ -14,21 +15,33 @@ class MovieRowList extends Component {
                     toggleTrailer={toggleTrailer} 
                     movies={movies} 
                     genre="Animation"/>
+                <MobileDisplay
+                    trailer={trailer} 
+                    toggleTrailer={toggleTrailer} />
                 <MovieRow 
                     trailer={trailer} 
                     toggleTrailer={toggleTrailer} 
                     movies={movies} 
                     genre="Family"/>
+                <MobileDisplay
+                    trailer={trailer} 
+                    toggleTrailer={toggleTrailer} />   
                 <MovieRow 
                     trailer={trailer} 
                     toggleTrailer={toggleTrailer} 
                     movies={movies} 
                     genre="Drama"/>
+                <MobileDisplay
+                    trailer={trailer} 
+                    toggleTrailer={toggleTrailer} />
                 <MovieRow 
                     trailer={trailer} 
                     toggleTrailer={toggleTrailer}
                     movies={movies} 
                     genre="Action"/>
+                <MobileDisplay
+                    trailer={trailer} 
+                    toggleTrailer={toggleTrailer} />
                 <MovieRow 
                     trailer={trailer} 
                     toggleTrailer={toggleTrailer} 

@@ -13,6 +13,7 @@
     background-color: rgba(0,0,0,.8);
     backface-visibility: hidden;
     z-index: 100;
+    overflow-x: scroll;
 
     .video-player {
         height: 360px;
@@ -92,21 +93,33 @@
     border-radius: 5px;
     position: relative;
 
+    
+
     .movie-trailer__close-button {
         background-color: rgba(0,0,0,.2);
         height: 40px;
         width: 40px;
-        border-radius: 50%;
         cursor: pointer;
         border: none;
         position: absolute;
-        right: 24px;
-        top: 24px;
+        &:hover {
+            background-color: $red;
+        }
         .icon {
             font-size: 24px;
             color: white;
             @include txt-shadow;
         }
+    }
+
+    .close {
+        right: 0;
+    }
+
+    .back {
+        height: 60px;
+        width: 60px;
+        display: none;
     }
 }
 
@@ -145,6 +158,12 @@
         .video-player {
             height: 250px;
         }
+        .back {
+            display: block;
+        }
+        .close {
+            display: none;
+        }
     }
 
     .movie__information {
@@ -161,7 +180,7 @@
         
     
         .movie-trailer__description {
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 

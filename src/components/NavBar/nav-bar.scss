@@ -7,7 +7,7 @@
     height: 70px;
     position: fixed;
     width: 100%;
-    z-index: 101;
+    z-index: 9999;
     color: white;
 
     .nav-bar__left-menu {
@@ -20,6 +20,11 @@
         .petflix-logo {
             height: 36px;
             margin-right: 25px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            &:hover {
+                transform: scale(1.1,1.1);
+            }
         }
 
         .nav-bar__link {

@@ -1,0 +1,56 @@
+@import '../../petflix.scss';
+
+.result__item-mobile {
+    display: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 3px;
+
+    
+}
+
+.result__item {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 3px;
+    position: relative;;
+
+    .movie-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        max-width: 120px;
+        max-height: 50px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .result__item {
+        height: 130px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .result__item-mobile {
+        height: 270px;
+        display: block;
+
+    }
+    .result__item {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .result__item-mobile {
+        height: 220px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .result__item-mobile {
+        height: 195px;
+    }
+}

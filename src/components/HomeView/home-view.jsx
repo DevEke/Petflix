@@ -1,11 +1,32 @@
 import NavBar from '../NavBar/nav-bar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HeroDisplay from '../HeroDisplay/hero-display';
+import { BrowserRouter as Router , Route } from 'react-router-dom';
 import './home-view.scss';
 import MovieRowList from '../MovieRowList/movie-row-list';
+import GenreView from '../GenreView/genre-view';
+import axios from 'axios';
+import ResultsView from '../Results-View/results-view';
 
 function HomeView(props) {
     const [trailer, setTrailer] = useState(false);
+    const [displayMovie, setDisplayMovie] = useState(undefined);
+    const [query, setQuery] = useState('');
+
+    function setMovie() {
+        axios.get('https://petflix.herokuapp.com/movie')
+            .then((response) => {
+                setDisplayMovie(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+                console.log(error);
+            });
+    }
+
+    function handleSearch(x) {
+        setQuery(x.target.value)
+    }
 
     function toggleTrailer() {
         if (trailer) {
@@ -15,18 +36,42 @@ function HomeView(props) {
         }
     }
 
+    function closeTrailer() {
+        setTrailer(false);
+    }
+
+    useEffect(() => {
+        setMovie();
+    }, [])
+
         const { movies, clearUser } = props;
         return (
-            <div className="home-view__container">
-                <NavBar 
-                    clearUser={clearUser} />
-                <HeroDisplay 
-                    trailer={trailer} 
-                    toggleTrailer={toggleTrailer} />
-                <MovieRowList 
-                    trailer={trailer} 
-                    toggleTrailer={toggleTrailer} 
-                    movies={movies} />
+            <div className="home__wrapper">
+            <Router>
+                <NavBar
+                    query={query}
+                    setMovie={setMovie}
+                    closeTrailer={closeTrailer}
+                    clearUser={clearUser}
+                    handleSearch={handleSearch} />
+                <Route exact path="/" render={() => {
+                    if (query.length >= 1)  
+                    return <ResultsView query={query} movies={movies}/>;
+                    return (
+                        <div className="home-view__container">
+                        <HeroDisplay
+                            movie={displayMovie} 
+                            trailer={trailer} 
+                            toggleTrailer={toggleTrailer} />
+                        <MovieRowList 
+                            trailer={trailer} 
+                            toggleTrailer={toggleTrailer} 
+                            movies={movies} />
+                    </div> 
+                    ) 
+                }}/>
+                <Route path="/:genre" render={({match}) => <GenreView genre={match.params.genre} movies={movies}/>}/>
+            </Router>
             </div>
         )
     

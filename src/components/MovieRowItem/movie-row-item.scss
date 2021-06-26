@@ -34,7 +34,7 @@
     display: none;
     width: 20vw;
     position: absolute;
-    background-color: #141414;
+    background-color: $bg-clr;
     top: 150px;
     box-sizing: border-box;
     padding: 16px;
@@ -51,23 +51,6 @@
         .add-button {
             background-image: url('../../img/plus-icon.svg');
         }
-
-        .movie-row-item__information-button {
-            box-sizing: border-box;
-            background-color: rgba(128,128,128,.2);
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            transition: border 0.2s;
-            margin-right: 8px;
-            background-position: center;
-            background-repeat: no-repeat;
-            cursor: pointer;
-
-            &:hover {
-                border: 2px solid white;
-            }
-        }
     }
     .movie-row-item__title-rating {
         display: flex;
@@ -83,8 +66,9 @@
     
         .movie-row-item__information-rating {
             font-size: 8px;
-            padding: 2px 5px;
-            border: 1px solid grey;
+            padding: 2px 6px;
+            border: 1px solid white;
+            border-radius: 3px;
             display: inline-block;
         }
     }
@@ -93,14 +77,12 @@
     .movie-row-item__information-description {
         font-size: 12px;
         margin: 0;
-        font-family: 'Lato';
     }
 
     .movie-row-item__information-genre {
         display: inline-block;
         font-size: 10px;
         margin-right: 12px;
-        font-family: 'Lato';
         opacity: .6;
     }
 }

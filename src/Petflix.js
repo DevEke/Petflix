@@ -1,4 +1,4 @@
-import {BrowserRouter as Router} from 'react-router-dom';
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import HomeView from './components/HomeView/home-view';
@@ -59,7 +59,7 @@ class Petflix extends Component {
     const { movies, trailer } = this.state;
 
     return (
-      <Router>
+      <div className="petflix__wrapper">
         {/* <Route exact path="/" render={() => { 
           // if (!user) return <SelectProfile setUser={user => this.setUser(user)} /> ;
           return <HomeView movies={movies} clearUser={() => this.clearUser} />}}
@@ -71,7 +71,7 @@ class Petflix extends Component {
             trailer={trailer} 
             movies={movies} 
             clearUser={() => this.clearUser} /> }
-      </Router>
+      </div>
     );
   }
 }

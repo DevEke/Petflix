@@ -1,6 +1,7 @@
 
 import './movie-row.scss';
 import MovieRowItem from '../MovieRowItem/movie-row-item';
+import { Link } from 'react-router-dom';
 
 function MovieRow(props) {
     const {genre, movies, toggleTrailer, trailer} = props;
@@ -8,7 +9,7 @@ function MovieRow(props) {
     return (
         <div className="movie-row__container">
             <div className="fader"/>
-            <h1 className="movie-row__title">{genre}</h1>
+            <Link to={`/${genre}`}><h1 className="movie-row__title">{genre}</h1></Link>
             {/* <div className={position === 0 ? "movie-row__arrows-container left hide" : "movie-row__arrows-container left"}>
                 <img className="movie-row__arrow" src={left} alt=""/>
             </div> */}

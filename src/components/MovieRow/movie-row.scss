@@ -6,6 +6,15 @@
     &:hover {
         z-index: 999;
     }
+
+    .movie-row__title {
+        font-size: 24px;
+        margin: 20px 0;
+        padding-left: 56px;
+        color: inherit;
+        text-decoration: none;
+    }
+
     .fader {
        width: 56px;
        position: absolute;
@@ -47,12 +56,7 @@
         border-radius: 0 3px 3px 0;
     }
 
-    .movie-row__title {
-        font-size: 24px;
-        padding: 20px 0;
-        padding-left: 56px;
-        margin: 0;
-    }
+    
 
     .movie-row__movies {
         display: flex;
@@ -95,7 +99,7 @@
          }
         .movie-row__title {
             font-size: 18px;
-            padding: 20px 0;
+            margin: 20px 0;
             padding-left: 40px;
         }
     

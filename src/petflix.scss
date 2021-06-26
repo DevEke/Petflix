@@ -1,9 +1,18 @@
 $bg-clr: #000000;
 $main-color: #ff7e2a;
+$red: #DB202C;
 * {
     box-sizing: border-box;
     font-family: 'Oxygen', sans-serif;
     transition: transform 0.3s, color 0.3s, background-color 0.3s;
+}
+.petflix__wrapper {
+    height: 100vh;
+    width: 100vw;
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 .padding {
     padding: 0 56px;
@@ -36,10 +45,18 @@ $main-color: #ff7e2a;
 }
 
 .btn {
-    background-color: transparent;
+    background-color: rgba(0,0,0,.3);
     border: none;
     color: white;
     border-radius: 3px;
+    margin: 8px 0;
+    cursor: pointer;
+    &:hover {
+        background-color: $bg-clr;
+    }
+    p{
+        font-size: 14px;
+    }
     .icon, p {
         @include txt-shadow();
     }

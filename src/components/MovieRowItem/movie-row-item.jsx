@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './movie-row-item.scss';
 import Trailer from '../Trailer/trailer';
+import {IoPlay} from 'react-icons/io5';
 
 function MovieRowItem(props) {
     const [trailer, setTrailer] = useState(false);
@@ -41,12 +42,10 @@ function MovieRowItem(props) {
 
     return (
             <>
-                <div onMouseEnter={expandDetails} onMouseLeave={compressDetails}  className="movie-row-item__backdrop" style={details ? expandedBackdrop : {backgroundImage: `url(${movie.backdropURL})`}}>
+                <div onMouseEnter={expandDetails} onMouseLeave={compressDetails} onClick={toggleTrailer}  className="movie-row-item__backdrop" style={details ? expandedBackdrop : {backgroundImage: `url(${movie.backdropURL})`}}>
                     <img className="movie-row-item__logo" src={movie.logoURL} alt=""/>
                     <div style={details ? expandedDetails : null } className="movie-row-item__information">
-                        <div className="movie-row-item__information-buttons">
-                            <button onClick={toggleTrailer} className="movie-row-item__information-button info-button"></button>
-                        </div>
+                        
                         <div className="movie-row-item__title-rating">
                             <h1 className="movie-row-item__information-title">{movie.title}</h1>
                             <small className="movie-row-item__information-rating">{movie.rating}</small>
@@ -57,6 +56,10 @@ function MovieRowItem(props) {
                                 <p className="movie-row-item__information-genre">{genre}</p>
                             )
                         })}
+                        <button onClick={toggleTrailer} className="btn icon-text">
+                            <IoPlay className="icon"/>
+                            <p>Play Trailer</p>  
+                        </button>
                     </div>
                 </div>
                 <div style={{backgroundImage: `url(${movie.posterURL})`}} onClick={toggleTrailer} className="movie-row-item__backdrop-mobile"/>

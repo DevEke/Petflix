@@ -1,0 +1,45 @@
+.mobile-display {
+    margin-top: 24px;
+    width: 100vw;
+    position: relative;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+
+    img {
+        max-width: 300px;
+        max-height: 70px;
+        padding-left: 20px;
+        margin-top: 150px;
+    }
+    p {       
+        padding: 2px 6px;
+        border: 1px solid white;
+        font-weight: 700;
+        border-radius: 3px;
+    }
+
+    .fader {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+    }
+
+    .top {
+        top: 0;
+        background: linear-gradient(0deg, rgba(0,0,20,0) 0%, rgba(0,0,0,1) 90%);
+    }
+
+    .bottom {
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0,0,20,0) 0%, rgba(0,0,0,1) 90%);
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .mobile-display {
+        display: inline-block;
+    }
+}

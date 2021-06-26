@@ -1,0 +1,10 @@
+@import '../../petflix.scss';
+
+
+.home__wrapper {
+    overflow-y: scroll;
+
+    .home-view__container {
+        overflow-x: hidden;
+    }
+}

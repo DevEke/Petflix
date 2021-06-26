@@ -6,6 +6,9 @@
     @include flex;
     flex-direction: column;
     justify-content: center;
+    .logo {
+        animation: scale 4s ease-in 0s infinite normal;
+    }
     p {
         color: white;
         margin: 0;
@@ -48,6 +51,18 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.1,1.1);
+    }
+    100% {
+        transform: scale(1,1);
     }
 }
 

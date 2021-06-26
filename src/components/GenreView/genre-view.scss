@@ -1,0 +1,71 @@
+@import '../../petflix.scss';
+
+.results__wrapper {
+    padding: 70px 56px 0px 56px;
+    overflow: hidden;
+    height: 100vh;
+    .spacer {
+        height: 1px;
+        width: 50px;
+        margin: 80px 0;
+    }
+    .genre__header {
+        display: flex;
+        align-items: center;
+        .icon {
+            color: white;
+            font-size: 20px;
+            margin-right: 20px;
+        }
+    }
+    .results__title {
+        margin: 0;
+        color: white;
+        font-size: 20px;
+    }
+    .results-movie__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        overflow: scroll;
+        margin-top: 16px;
+        margin-bottom: 100px;
+    }
+
+    .results-movie__item {
+        height: 175px;
+        border-radius: 3px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .results__wrapper {
+        padding: 70px 40px 0px 40px;
+        .results-movie__wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            overflow: scroll;
+            margin-top: 16px;
+            padding-bottom: 50px;
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .results__wrapper {
+        padding: 70px 20px 0px 20px;
+        .results-movie__wrapper {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .results__title {
+            margin: 0;
+            color: white;
+            font-size: 16px;
+        }
+    }
+}
