@@ -1,0 +1,23 @@
+@import '../../petflix.scss';
+
+.movie-row-list__container {
+    background: linear-gradient(180deg, rgba(0,0,20,0) 0%, rgba(0,0,0,1) 7%);
+    color: white;
+    position: relative;
+    padding-top: 100px;
+    top: -250px;
+}
+
+@media only screen and (max-width: 768px) {
+    .movie-row-list__container {
+        top: -150px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .movie-row-list__container {
+        padding-top: 70px;
+        top: 0px;
+    }
+}

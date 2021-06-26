@@ -1,0 +1,167 @@
+@import '../../petflix.scss';
+
+.trailer__wrapper {
+    @include flex;
+    flex-direction: column;
+    position: fixed;
+    box-sizing: border-box;
+    padding-top: 100px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,.8);
+    backface-visibility: hidden;
+    z-index: 100;
+
+    .video-player {
+        height: 360px;
+    }
+}
+
+.movie__information {
+    background-color: $bg-clr;
+    box-sizing: border-box;
+    width: 640px;
+    padding: 24px;
+    color: white;
+
+    .movie-trailer__title-add {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        .movie-trailer__title {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .movie-trailer__button {
+            border: none;
+            background-color: transparent;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            transition: border 0.2s;
+            margin-right: 8px;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            .icon {
+                font-size: 20px;
+                color: $main-color;
+            }
+            &:hover {
+                background-color: rgba(255,255,255,.1);
+            }
+        }
+    }
+    
+
+    .movie-trailer__description {
+        font-size: 24px;
+        margin: 0 0 16px 0;
+    }
+
+    .movie-trailer__director {
+        font-size: 12px;
+        margin: 5px 0 16px;
+    }
+
+    .movie-trailer__rating {
+        font-size: 12px;
+        padding: 4px 7px;
+        border: 1px solid grey;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0 0 16px 0;
+    }
+
+    .movie-trailer__genres {
+        display: inline-block;
+        font-size: 14px;
+        margin-right: 12px;
+        opacity: .6;
+        margin-bottom: 68px;
+    }
+}
+
+.movie-trailer__container {
+    border-radius: 5px;
+    position: relative;
+
+    .movie-trailer__close-button {
+        background-color: rgba(0,0,0,.2);
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        .icon {
+            font-size: 24px;
+            color: white;
+            @include txt-shadow;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .movie-row-item__backdrop {
+        display: none;
+    }
+    .movie-row-item__backdrop-mobile {
+        display: inline-block;
+        height: 230px;
+        width: 154px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        flex-shrink: 0;
+        margin-right: 10px;
+        border-radius: 3px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .trailer__wrapper {
+        padding-top: 0;
+    
+        .video-player {
+            height: 360px;
+        }
+    }
+    .movie-trailer__container {
+        height: 100vh;
+        width: 100vw;
+        margin-top: 70px;
+
+        .video-player {
+            height: 250px;
+        }
+    }
+
+    .movie__information {
+        width: 100vw;
+        padding: 24px;
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%);
+    
+        .movie-trailer__title-add {
+            .movie-trailer__title {
+                font-size: 24px;
+                width: 80%;
+            }
+        }
+        
+    
+        .movie-trailer__description {
+            font-size: 20px;
+        }
+    }
+
+}

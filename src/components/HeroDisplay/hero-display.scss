@@ -1,0 +1,142 @@
+@import '../../petflix.scss';
+
+
+.hero-display__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0,0,0,.2);
+    background-blend-mode: color;
+
+    .hero-display__movie-information {
+        margin-left: 56px;
+        margin-bottom: 100px;
+
+        .info__wrapper {
+            // background-color: rgba(0,0,0,.5);
+            // border-radius: 5px;
+            // padding: 20px;
+            width: 60%;
+            margin-bottom: 24px;
+        }
+
+        .hero-display__movie-logo {
+            max-height: 200px;
+            max-width: 500px;
+            margin-bottom: 8px;
+        }
+
+        .hero-display__heading {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0;
+            @include txt-shadow;
+        }
+        .hero-display__movie-description {
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+            @include txt-shadow;
+            
+        }
+        .hero-display__control-buttons {
+            display: flex;
+            align-items: center;
+
+            .hero-display__button {
+                display: flex;
+                align-items: center;
+                padding: 12px 24px;
+                font-weight: 700;
+                font-size: 18px;
+                margin-right: 12px;
+                border-radius: 3px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.2s;
+
+                .icon {
+                    margin-right: 8px;
+                    height: 24px;
+                }
+            }
+
+            .more-info {
+                color: white;
+                background-color: rgba(0,0,0,.3);
+                &:hover {
+                    background-color: rgba(0,0,0,.2);
+                }
+            }
+            
+            .play {
+                background-color: white;
+                &:hover {
+                    background-color: lightgrey;
+                }
+            }
+        }
+        
+    }
+
+    .hero-display__rating {
+        position: absolute;
+        @include flex;
+        padding: 12px 24px;
+        bottom: 300px;
+        color: white;
+        border-radius: 3px;
+        background-color: rgba(0,0,0,.1);
+        right: 0;
+
+        .icon {
+            margin-right: 12px;
+        }
+
+        p {
+            margin: 0 56px 0 0;
+            font-size: 20px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .hero-display__container {
+        height: 60vh;
+        .hero-display__movie-information {
+            margin-left: 40px;
+            margin-bottom: 0px;
+            .hero-display__movie-logo {
+                max-height: 100px;
+                max-width: 300px;
+                margin-bottom: 8px;
+            }
+            .hero-display__heading {
+                font-size: 20px;
+            }
+            .hero-display__movie-description {
+                font-size: 18px;
+                
+            }
+        }
+        .hero-display__rating {
+            bottom: 150px;
+            p {
+                margin: 0 40px 0 0;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .hero-display__container {
+        display: none;
+    }
+}

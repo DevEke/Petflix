@@ -1,0 +1,81 @@
+$bg-clr: #000000;
+$main-color: #ff7e2a;
+* {
+    box-sizing: border-box;
+    font-family: 'Oxygen', sans-serif;
+    transition: transform 0.3s, color 0.3s, background-color 0.3s;
+}
+.padding {
+    padding: 0 56px;
+}
+@mixin txt-shadow {
+    text-shadow: 1px 1px 2px black;
+}
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+.icon-text {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    .icon {
+        margin-right: 12px;
+        font-size: 20px;
+    }
+    p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+.text {
+    color: white;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    .icon, p {
+        @include txt-shadow();
+    }
+}
+
+
+html,
+body {
+    margin: 0;
+    background-color: $bg-clr;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+        opacity: .7;
+    }
+}
+
+::-webkit-scrollbar {
+    width:0;
+    height:0;
+}
+
+@media only screen and (max-width: 768px) {
+    .padding {
+        padding: 0 40px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .padding {
+        padding: 0 20px;
+    }
+}   

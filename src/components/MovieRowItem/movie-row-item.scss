@@ -1,0 +1,162 @@
+@import '../../petflix.scss';
+
+.movie-row-item__backdrop-mobile {
+    display: none;
+}
+.movie-row-item__backdrop {
+    width: 20vw;
+    display: inline-block;
+    position: relative;
+    margin-right: 8px;
+    flex-shrink: 0;
+    height: 150px;
+    bottom: 0;
+    border-radius: 3px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.2s, bottom 0.2s, box-shadow 0.2s;
+
+    img {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        max-height: 30%;
+        max-width: 50%;
+    }
+}
+
+
+
+
+.movie-row-item__information {
+    display: none;
+    width: 20vw;
+    position: absolute;
+    background-color: #141414;
+    top: 150px;
+    box-sizing: border-box;
+    padding: 16px;
+    z-index: 888;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.7);
+
+    .movie-row-item__information-buttons {
+        margin-bottom: 8px;
+
+        .info-button {
+            background-image: url('../../img/play-icon-2.svg');
+        }
+        .add-button {
+            background-image: url('../../img/plus-icon.svg');
+        }
+
+        .movie-row-item__information-button {
+            box-sizing: border-box;
+            background-color: rgba(128,128,128,.2);
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            transition: border 0.2s;
+            margin-right: 8px;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+
+            &:hover {
+                border: 2px solid white;
+            }
+        }
+    }
+    .movie-row-item__title-rating {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        .movie-row-item__information-title {
+            font-size: 18px;
+            margin: 0;
+            font-weight: 700;
+        }
+    
+        .movie-row-item__information-rating {
+            font-size: 8px;
+            padding: 2px 5px;
+            border: 1px solid grey;
+            display: inline-block;
+        }
+    }
+    
+
+    .movie-row-item__information-description {
+        font-size: 12px;
+        margin: 0;
+        font-family: 'Lato';
+    }
+
+    .movie-row-item__information-genre {
+        display: inline-block;
+        font-size: 10px;
+        margin-right: 12px;
+        font-family: 'Lato';
+        opacity: .6;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .movie-row-item__backdrop {
+        width: 25vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .movie-row-item__backdrop {
+        display: none;
+    }
+    .movie-row-item__backdrop-mobile {
+        display: inline-block;
+        height: 230px;
+        width: 154px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        flex-shrink: 0;
+        margin-right: 10px;
+        border-radius: 3px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .movie-trailer__container {
+        height: 100vh;
+        width: 100vw;
+        margin-top: 70px;
+
+        .video-player {
+            height: 250px;
+        }
+    }
+
+    .movie__information {
+        width: 100vw;
+        padding: 24px;
+    
+        .movie-trailer__title-add {
+            .movie-trailer__title {
+                font-size: 24px;
+                width: 80%;
+            }
+        }
+        
+    
+        .movie-trailer__description {
+            font-size: 20px;
+        }
+    }
+    .showing {
+        padding: 0;
+    }
+
+}
