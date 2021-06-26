@@ -1,11 +1,8 @@
-import { useState } from 'react';
+
 import './movie-row.scss';
 import MovieRowItem from '../MovieRowItem/movie-row-item';
-import right from '../../img/arrow-right-icon.svg';
-import left from '../../img/arrow-left-icon.svg';
 
 function MovieRow(props) {
-    const [position, changePosition] = useState(0);
     const {genre, movies, toggleTrailer, trailer} = props;
 
     return (

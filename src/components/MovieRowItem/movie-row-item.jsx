@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import './movie-row-item.scss';
-import ReactPlayer from 'react-player';
-import { IoClose } from 'react-icons/io5';
 import Trailer from '../Trailer/trailer';
 
 function MovieRowItem(props) {
     const [trailer, setTrailer] = useState(false);
     const [details, setDetails] = useState(false);
-    const [playing, setPlaying] = useState(false);
 
 
     function toggleTrailer() {

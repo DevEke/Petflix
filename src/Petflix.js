@@ -1,7 +1,6 @@
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
-import SelectProfile from './components/SelectProfile/select-profile';
 import HomeView from './components/HomeView/home-view';
 import LoadingHome from './components/LoadingHome/loading-home';
 import './petflix.scss';
@@ -57,7 +56,7 @@ class Petflix extends Component {
   }
 
   render(){
-    const {user, movies, trailer } = this.state;
+    const { movies, trailer } = this.state;
 
     return (
       <Router>

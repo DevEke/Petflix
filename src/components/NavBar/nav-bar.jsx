@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import search from '../../img/search-icon.svg';
 import logo from '../../img/petflix-logo.png';
-import caret from '../../img/caret-down-icon.svg';
-import caretDD from '../../img/caret-up-icon.svg';
 import { IoSearch, IoCaretDown, IoMenu } from 'react-icons/io5';
 import './nav-bar.scss';
 
