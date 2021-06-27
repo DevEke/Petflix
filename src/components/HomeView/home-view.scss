@@ -2,7 +2,8 @@
 
 
 .home__wrapper {
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    position: relative;
 
     .home-view__container {
         overflow-x: hidden;

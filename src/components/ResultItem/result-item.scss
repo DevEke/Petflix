@@ -15,7 +15,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 3px;
-    position: relative;;
+    position: relative;
+    height: 130px;
 
     .movie-logo {
         position: absolute;
@@ -23,6 +24,11 @@
         left: 10px;
         max-width: 120px;
         max-height: 50px;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .result__item {
+        height: 150px;
     }
 }
 

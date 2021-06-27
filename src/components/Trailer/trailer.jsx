@@ -14,7 +14,7 @@ function Trailer(props) {
                             <IoClose className="icon"/>
                         </button>
                         <div className="video-player">
-                        <ReactPlayer key={movie.trailerURL} width={"100%"} height={"100%"} light={movie.backdropURL} volume={0} loop={true} playing={false} image={movie.backdropURL} muted={false} url={movie.trailerURL}/>
+                        <ReactPlayer key={movie.trailerURL} width={"100%"} height={"100%"} light={movie.backdropURL} loop={true} playing={false} image={movie.backdropURL} url={movie.trailerURL}/>
                         </div>
                         <div className="movie__information">
                             <div className="movie-trailer__title-add">

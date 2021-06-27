@@ -7,11 +7,13 @@ import MovieRowList from '../MovieRowList/movie-row-list';
 import GenreView from '../GenreView/genre-view';
 import axios from 'axios';
 import ResultsView from '../Results-View/results-view';
+import MobileMenu from '../MobileMenu/mobile-menu';
 
 function HomeView(props) {
     const [trailer, setTrailer] = useState(false);
     const [displayMovie, setDisplayMovie] = useState(undefined);
     const [query, setQuery] = useState('');
+    const [mobileMenu, setMobileMenu] = useState(false);
 
     function setMovie() {
         axios.get('https://petflix.herokuapp.com/movie')
@@ -28,11 +30,23 @@ function HomeView(props) {
         setQuery(x.target.value)
     }
 
+    function handleClear() {
+        setQuery('');
+    }
+
     function toggleTrailer() {
         if (trailer) {
             setTrailer(false);
         } else {
             setTrailer(true);
+        }
+    }
+
+    function toggleMenu() {
+        if (mobileMenu) {
+            setMobileMenu(false);
+        } else {
+            setMobileMenu(true);
         }
     }
 
@@ -46,9 +60,12 @@ function HomeView(props) {
 
         const { movies, clearUser } = props;
         return (
-            <div className="home__wrapper">
+            <div style={mobileMenu ? {overflowY: 'hidden'} : {overflowY: 'scroll'}} className="home__wrapper">
             <Router>
+                {mobileMenu ? <MobileMenu toggleMenu={toggleMenu}/> : null}
                 <NavBar
+                    toggleMenu={toggleMenu}
+                    handleClear={handleClear}
                     query={query}
                     setMovie={setMovie}
                     closeTrailer={closeTrailer}

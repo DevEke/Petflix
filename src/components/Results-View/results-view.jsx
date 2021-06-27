@@ -31,6 +31,11 @@ function ResultsView(props) {
                 <Link to="/"><IoArrowBack className="icon"/></Link>
                  <h1 className="results__title">Search Results</h1> 
             </div>
+            {filteredMovies.length === 0 ?
+            <div className="no-results">
+                <h1>No Results</h1>
+                <p>Search Again</p>
+            </div> :
             <div className="results-movie__wrapper">
                 {filteredMovies.map((movie) => {
                     return (
@@ -43,7 +48,7 @@ function ResultsView(props) {
                     )
                 })}
                 <div className="spacer"/>
-            </div>
+            </div>}
         </div>
     )
 }

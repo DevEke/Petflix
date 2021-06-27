@@ -52,7 +52,7 @@
 
             .nav-bar__search-input {
                 background-color: transparent;
-                padding: 8px 36px;
+                padding: 12px 36px;
                 width: 250px;
                 border: none;
                 border-bottom: 1px solid white;
@@ -60,6 +60,16 @@
                 &:focus {
                     outline: none;
                 }
+            }
+            .clear-search {
+                font-size: 20px;
+                position: absolute;
+                display: none;
+                z-index: 9999;
+                right: 0;
+            }
+            .clear-shown {
+                display: block;
             }
             .nav-bar__icon {
                 margin: 0;

@@ -1,33 +1,41 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../img/petflix-logo.png';
-import { IoSearch, IoCaretDown, IoMenu } from 'react-icons/io5';
+import { IoSearch, IoCaretDown, IoMenu, IoClose } from 'react-icons/io5';
 import './nav-bar.scss';
 
 
 function NavBar(props) {
     const [searchbar, setSearchbar] = useState(false);
+    const { clearUser, handleSearch, query, handleClear, toggleMenu} = props;
+    
 
     function toggleSearch() {
         if (searchbar) {
             setSearchbar(false);
+            handleClear();
         } else {
             setSearchbar(true);
         }
     }
 
-    const { clearUser, handleSearch, query} = props;
+    function refresh() {
+        window.location.reload();
+    }
+
+    
 
     return (
         <div className="nav-bar__container padding">
             <div className="nav-bar__left-menu">
-                <IoMenu className="mobile-hamburger__menu"/>
-                <Link to="/"><img className="petflix-logo" src={logo} alt=""/></Link>
+                <IoMenu onClick={toggleMenu} className="mobile-hamburger__menu"/>
+                <Link to="/"><img onClick={refresh} className="petflix-logo" src={logo} alt=""/></Link>
                 
             </div>
             <div className="nav-bar__right-menu">
                 <div className="nav-bar__search-container">
                     <IoSearch onClick={toggleSearch} className={ searchbar ? "nav-bar__icon open" : "nav-bar__icon"}/>
+                    <IoClose onClick={handleClear} className={searchbar ? "clear-search clear-shown" : "clear-search"}/>
                     {searchbar ? <input onChange={handleSearch} value={query} className="nav-bar__search-input" placeholder="Titles" type="text"/> : null}
                 </div>
                 <div className="nav-bar__profile-dropdown">
