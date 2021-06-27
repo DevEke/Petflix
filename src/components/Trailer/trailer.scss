@@ -94,14 +94,14 @@
     position: relative;
 
     
-
     .movie-trailer__close-button {
-        background-color: rgba(0,0,0,.2);
+        background-color: transparent;
+        position: absolute;
         height: 40px;
         width: 40px;
+        right: 0;
         cursor: pointer;
         border: none;
-        position: absolute;
         &:hover {
             background-color: $red;
         }
@@ -112,14 +112,20 @@
         }
     }
 
-    .close {
-        right: 0;
-    }
-
-    .back {
-        height: 60px;
-        width: 60px;
+    .movie-trailer__back-button {
         display: none;
+        background-color: transparent;
+        margin-bottom: 5px;
+        cursor: pointer;
+        border: none;
+        &:hover {
+            background-color: $red;
+        }
+        .icon {
+            font-size: 24px;
+            color: white;
+            @include txt-shadow;
+        }
     }
 }
 
@@ -158,10 +164,10 @@
         .video-player {
             height: 250px;
         }
-        .back {
+        .movie-trailer__back-button {
             display: block;
         }
-        .close {
+        .movie-trailer__close-button {
             display: none;
         }
     }

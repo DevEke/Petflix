@@ -56,7 +56,7 @@ function MovieRowItem(props) {
                                 <p className="movie-row-item__information-genre">{genre}</p>
                             )
                         })}
-                        <button onClick={toggleTrailer} className="btn icon-text">
+                        <button onClick={toggleTrailer} className="btn icon-text details">
                             <IoPlay className="icon"/>
                             <p>Play Trailer</p>  
                         </button>

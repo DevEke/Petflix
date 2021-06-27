@@ -2,6 +2,7 @@
 import './movie-row.scss';
 import MovieRowItem from '../MovieRowItem/movie-row-item';
 import { Link } from 'react-router-dom';
+import {IoArrowForward} from 'react-icons/io5';
 
 function MovieRow(props) {
     const {genre, movies, toggleTrailer, trailer} = props;
@@ -28,6 +29,22 @@ function MovieRow(props) {
                             return null
                         }
                     })}
+                    <Link to={`/${genre}`} className="movie-row-item__backdrop">
+                        <p>See All</p>
+                        <p>{genre}</p>
+                        <IoArrowForward className='icon'/>
+                    </Link>
+                    <Link 
+                        to={`/${genre}`} 
+                        style={
+                            {   background: '#141414', 
+                                display: 'flex', 
+                                justifyContent: 'center', 
+                                alignItems: 'center'}} 
+                                className="movie-row-item__backdrop-mobile">
+                        <p style={{fontSize: 18, marginRight: 8, fontWeight: 700}}>See All</p>
+                        <IoArrowForward size={20} className='icon'/>
+                    </Link>
                 </div>
             {/* <div className={ position === 100 ? "movie-row__arrows-container right hide" : "movie-row__arrows-container right"}>
                 <img className="movie-row__arrow" src={right} alt=""/>

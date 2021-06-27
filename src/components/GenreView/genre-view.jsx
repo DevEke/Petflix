@@ -39,8 +39,8 @@ function GenreView(props) {
                         return null
                     }
                 })}
-                <div className="spacer"/>
             </div>
+            <div className="spacer"/>
         </div>
     )
 }
