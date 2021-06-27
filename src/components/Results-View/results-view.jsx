@@ -1,7 +1,6 @@
 import './results-view.scss';
 import { IoArrowBack } from 'react-icons/io5';
 import ResultItem from '../ResultItem/result-item';
-import {Link} from 'react-router-dom';
 import { useState } from 'react';
  
 
