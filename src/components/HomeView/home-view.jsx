@@ -73,7 +73,7 @@ function HomeView(props) {
                     handleSearch={handleSearch} />
                 <Route exact path="/" render={() => {
                     if (query.length >= 1)  
-                    return <ResultsView query={query} movies={movies}/>;
+                    return <ResultsView handleClear={handleClear} query={query} movies={movies}/>;
                     return (
                         <div className="home-view__container">
                         <HeroDisplay

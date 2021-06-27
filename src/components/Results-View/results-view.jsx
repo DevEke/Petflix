@@ -16,7 +16,7 @@ function ResultsView(props) {
             setTrailer(true);
         }
     }
-    const { movies, query } = props;
+    const { movies, query, handleClear } = props;
     let filteredMovies = movies;
     const cased = query.toLowerCase();
     
@@ -28,7 +28,7 @@ function ResultsView(props) {
     return (
         <div className="results__wrapper">
             <div className="genre__header">
-                <Link to="/"><IoArrowBack className="icon"/></Link>
+                <IoArrowBack  onClick={handleClear} className="icon"/>
                  <h1 className="results__title">Search Results</h1> 
             </div>
             {filteredMovies.length === 0 ?
