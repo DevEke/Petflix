@@ -2,53 +2,108 @@
 import './movie-row.scss';
 import MovieRowItem from '../MovieRowItem/movie-row-item';
 import { Link } from 'react-router-dom';
-import {IoArrowForward} from 'react-icons/io5';
+import {IoArrowForward, IoArrowBack} from 'react-icons/io5';
+import {useRef  , useEffect, useState} from 'react';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 function MovieRow(props) {
-    const {genre, movies, toggleTrailer, trailer} = props;
+    const {genre, movies, loadTrailer} = props;
+    const [movieLength, setMovieLength] = useState();
+    const [count, setCount] = useState(0);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [windowWidth, setWindowWidth] =useState(window.innerWidth)
+    const [calc, setCalc] = useState(scrollPosition/windowWidth)
+
+    const ref = useRef();
+
+    const scroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    }
+
+    const leftScroll = (offset) => {
+        setCount(count+1);
+        console.log(count);
+        console.log('clieck')
+        setScrollPosition(Math.round(scrollPosition-offset));
+        console.log(limit);
+    }
+
+    const rightScroll = (offset) => {
+        setCount(count-1);
+        console.log(count);
+        console.log('clieck')
+        setScrollPosition(Math.round(scrollPosition+offset));
+        console.log(limit);
+    }
+
+    const handleResize = (e) => {
+        setWindowWidth(window.innerWidth)
+    }
+
+    const limit = document.getElementById(`${genre}`)?.childElementCount - 4;
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        setCalc(scrollPosition/windowWidth);
+        console.log();
+    },[scrollPosition, windowWidth, movies, genre])
 
     return (
         <div className="movie-row__container">
             <div className="fader"/>
+            {count === limit-1 ?
+            null : 
+            <div 
+            onClick={calc > -2.4 ? () => leftScroll((windowWidth*.20) + (windowWidth*.01)) : null} 
+            className="movie-row__arrows-container right flex row centered">
+                <IoArrowForward className="icon"/>
+            </div>}
             <Link to={`/${genre}`}><h1 className="movie-row__title">{genre}</h1></Link>
-            {/* <div className={position === 0 ? "movie-row__arrows-container left hide" : "movie-row__arrows-container left"}>
-                <img className="movie-row__arrow" src={left} alt=""/>
-            </div> */}
-                <div className="movie-row__movies">
+
+            
+
+                <ul id={genre} ref={ref} style={{transform: 'translateX('+scrollPosition+'px)' }} className="movie-row__movies flex">
                     {movies.map((movie) => {
                         if (movie.genres.indexOf(genre) > 0) {
                             return (
-                                <MovieRowItem 
+                                <li><MovieRowItem
                                     className="movie-row__item" 
                                     key={movie._id} 
                                     movie={movie}
-                                    toggleTrailer={toggleTrailer}
-                                    trailer={trailer}/>
+                                    loadTrailer={loadTrailer}/>
+                                </li>
                             )
                         } else {
                             return null
                         }
                     })}
-                    <Link to={`/${genre}`} className="movie-row-item__backdrop">
-                        <p>See All</p>
-                        <p>{genre}</p>
-                        <IoArrowForward className='icon'/>
-                    </Link>
-                    <Link 
-                        to={`/${genre}`} 
-                        style={
-                            {   background: '#141414', 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center'}} 
-                                className="movie-row-item__backdrop-mobile">
-                        <p style={{fontSize: 18, marginRight: 8, fontWeight: 700}}>See All</p>
-                        <IoArrowForward size={20} className='icon'/>
-                    </Link>
-                </div>
-            {/* <div className={ position === 100 ? "movie-row__arrows-container right hide" : "movie-row__arrows-container right"}>
-                <img className="movie-row__arrow" src={right} alt=""/>
-            </div> */}
+                    <li className="desktop__only"><Link to={`/${genre}`} className="movie-row-item__backdrop see-all flex clm centered ">
+                        <p className="orange__link"> {genre}</p>
+                        <div className="flex row">
+                            <p>See All</p>
+                            <IoArrowForward className='icon'/>
+                        </div>
+                    </Link></li>
+                    <li className="mobile__only">
+                        <Link 
+                            to={`/${genre}`} 
+                            className="movie-row-item__backdrop-mobile flex clm centered see-all__mobile">
+                            <p className="orange__link"> {genre}</p>
+                            <div className="flex row">
+                                <p style={{fontSize: 14, marginRight: 8, fontWeight: 700}}>See All</p>
+                                <IoArrowForward size={20} className='icon'/>
+                            </div>            
+                        </Link></li>
+                </ul>
+                {calc !== 0 ?
+             
+                    <div onClick={() => rightScroll((windowWidth*.20) + (windowWidth*.01))} className="movie-row__arrows-container left flex row centered">
+                        <IoArrowBack className="icon"/>
+                    </div>
+               
+
+                : null}
+
         </div>
     )
     

@@ -7,7 +7,7 @@
     width: 20vw;
     display: inline-block;
     position: relative;
-    margin-right: 8px;
+    margin-right: 1vw;
     flex-shrink: 0;
     height: 150px;
     bottom: 0;
@@ -42,10 +42,6 @@
     border-radius: 0 0 3px 3px;
     box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.7);
 
-    .details {
-        background: #141414;
-    }
-
     .movie-row-item__information-buttons {
         margin-bottom: 8px;
 
@@ -70,8 +66,8 @@
     
         .movie-row-item__information-rating {
             font-size: 8px;
-            padding: 2px 6px;
-            border: 1px solid white;
+            padding: 6px;
+            background-color: rgba(255,255,255,.1);
             border-radius: 3px;
             display: inline-block;
         }
@@ -91,30 +87,58 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
-    .movie-row-item__backdrop {
-        width: 25vw;
-    }
-}
+// @media only screen and (max-width: 1024px) {
+//     .movie-row-item__backdrop {
+//         width: 25vw;
+//     }
+// }
 
 @media only screen and (max-width: 768px) {
     .movie-row-item__backdrop {
         display: none;
     }
+
+    .see-all__mobile {
+        background-color: rgba(255,255,255,.01);
+    }
+    
     .movie-row-item__backdrop-mobile {
-        display: inline-block;
+        display: flex;
         height: 230px;
-        width: 154px;
+        width: 20vw;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         flex-shrink: 0;
-        margin-right: 10px;
+        margin-right: 1vw;
         border-radius: 3px;
+        padding: 20px;
+        
+
+        
+
+        .orange__link {
+            color: $main-color;
+            font-weight: 700;
+            font-size: 18px;
+        }
     }
 }
 
 @media only screen and (max-width: 425px) {
+    .movie-row-item__backdrop-mobile {
+        width: 35vw;
+        margin-right: 3vw;
+    
+        img {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            max-height: 30%;
+            max-width: 50%;
+        }
+    }
+
     .movie-trailer__container {
         height: 100vh;
         width: 100vw;

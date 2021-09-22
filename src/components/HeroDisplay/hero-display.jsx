@@ -4,61 +4,34 @@ import Trailer from '../Trailer/trailer';
 import './hero-display.scss';
 import LoadingHome from '../LoadingHome/loading-home';
 
-class HeroDisplay extends Component {
-    constructor(props) {
-        super(props);
+function HeroDisplay(props) {
+    const { movie, loadTrailer } = props;
 
-        this.state = {
-            movie: {}
-        }
-    }
-
-    // setMovie = () => {
-    //     axios.get('https://petflix.herokuapp.com/movie')
-    //         .then((response) => {
-    //             this.setState({
-    //                 movie: response.data
-    //             })
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //             console.log(error);
-    //         });
-    // }
-
-    // componentDidMount() {
-    //     this.setMovie();
-    // }
-
-    render() {
-        const { trailer, toggleTrailer, movie } = this.props;
+        
         return (
             <>
                 {movie ? 
-                <div className="hero-display__container" style={{backgroundImage: `url(${movie.backdropURL})`}}>
+                <div className="hero-display__container flex clm centered" style={{backgroundImage: `url(${movie.backdropURL})`}}>
                     <div className="hero-display__movie-information">
                         <div className="info__wrapper">
                             <img className="hero-display__movie-logo" src={movie.logoURL} alt=""/>
                             <p className="hero-display__movie-description text">{movie.description}</p>
                         </div>
-                        <button onClick={toggleTrailer} className="btn icon-text">
-                            <IoPlay className="icon"/>
+                        <button onClick={() => loadTrailer(movie)} className="btn">
                             <p>Play Trailer</p>
+                            <IoPlay className="icon"/>
                         </button>
                     </div>
                     <div className="hero-display__rating">
                         <p>{movie.rating}</p>
                     </div>
+                    <div className="hero-fader" />
                 </div>
                 : <LoadingHome/>
                 }
-                {trailer ?
-                <Trailer movie={movie} toggleTrailer={toggleTrailer}/> :
-                null }
                 
             </>
         )
-    }
 }
 
 export default HeroDisplay;

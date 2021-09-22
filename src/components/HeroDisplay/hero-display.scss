@@ -2,25 +2,28 @@
 
 
 .hero-display__container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 70vh;
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0,0,0,.2);
     background-blend-mode: color;
+    background-attachment: fixed;
+
+    .hero-fader {
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-image: linear-gradient(rgba(0,0,0,0) 20%, rgba(0,0,0,1) 100%);
+        
+    }
 
     .hero-display__movie-information {
-        margin-left: 56px;
-        margin-bottom: 100px;
+        padding: 0 8.5vw;
 
         .info__wrapper {
-            // background-color: rgba(0,0,0,.5);
-            // border-radius: 5px;
-            // padding: 20px;
             width: 60%;
             margin-bottom: 24px;
         }
@@ -31,59 +34,40 @@
             margin-bottom: 8px;
         }
 
-        .hero-display__heading {
-            font-weight: 700;
-            font-size: 20px;
-            margin: 0;
-            @include txt-shadow;
-        }
         .hero-display__movie-description {
             font-size: 24px;
             font-weight: 400;
             margin: 0;
+            color: white;
             @include txt-shadow;
             
         }
-        .hero-display__control-buttons {
-            display: flex;
-            align-items: center;
-
-            .more-info {
-                color: white;
-                background-color: rgba(0,0,0,.3);
-                &:hover {
-                    background-color: rgba(0,0,0,.2);
-                }
-            }
-            
-            .play {
-                background-color: white;
-                &:hover {
-                    background-color: lightgrey;
-                }
-            }
-        }
         
+        .play {
+            background-color: white;
+            &:hover {
+                background-color: lightgrey;
+            }
+        }  
     }
 
     .hero-display__rating {
         position: absolute;
-        @include flex;
-        padding: 12px 24px;
-        bottom: 300px;
+        padding: 12px;
+        bottom: 100px;
         color: white;
         border-radius: 3px;
-        background-color: rgba(0,0,0,.1);
-        right: 0;
+        background-color: rgba(255,255,255,.1);
+        right: 8.5vw;
 
         .icon {
             margin-right: 12px;
         }
 
         p {
-            margin: 0 56px 0 0;
             font-size: 20px;
             font-weight: 700;
+            margin: 0;
         }
 
     }
@@ -94,7 +78,7 @@
     .hero-display__container {
         height: 60vh;
         .hero-display__movie-information {
-            margin-left: 40px;
+            padding-left: 8.5v;
             margin-bottom: 0px;
             .hero-display__movie-logo {
                 max-height: 100px;
@@ -110,9 +94,9 @@
             }
         }
         .hero-display__rating {
-            bottom: 150px;
+            bottom: 100px;
             p {
-                margin: 0 40px 0 0;
+                
                 font-size: 18px;
             }
         }
@@ -121,6 +105,24 @@
 
 @media only screen and (max-width: 425px) {
     .hero-display__container {
-        display: none;
+        height: 80vh;
+
+        .hero-fader {
+            height: 50px;
+        }
+        .hero-display__movie-information {
+            padding:  0 5vw;
+            .info__wrapper {
+                width: 80%;
+                margin-bottom: 24px;
+            }
+        }
+        .hero-display__movie-description {
+            font-size: 18px;
+        }
+
+        .hero-display__rating {
+            right: 5vw;
+        }
     }
 }

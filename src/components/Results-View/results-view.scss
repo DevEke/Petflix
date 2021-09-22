@@ -1,4 +1,11 @@
 @import '../../petflix.scss';
+.results__wrapper {
+    background-color: black;
+    .mobile__only {
+    display: none;
+}
+}
+
 
 .no-results {
     color: rgba(255,255,255,.5);
@@ -18,5 +25,11 @@
         font-size: 14px;
         font-weight: 400;
         margin: 0;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .mobile__only {
+        display: block;
     }
 }

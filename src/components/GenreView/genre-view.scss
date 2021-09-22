@@ -1,9 +1,9 @@
 @import '../../petflix.scss';
 
 .results__wrapper {
-    padding: 70px 56px 0px 56px;
-    overflow: hidden;
+    overflow-y: scroll;
     height: 100vh;
+    padding: 10vh 8.5vw;
     .spacer {
         height: 1px;
         width: 50px;
@@ -26,11 +26,9 @@
     .results-movie__wrapper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 20px;
+        grid-gap: 1vw;
         margin: 0 auto;
         overflow: scroll;
-        margin-bottom: 100px;
-        height: 100%;
     }
 
     .results-movie__item {

@@ -5,17 +5,8 @@ import { useState } from 'react';
  
 
 function ResultsView(props) {
-    const [trailer, setTrailer] = useState(false);
 
-
-    function toggleTrailer() {
-        if (trailer) {
-            setTrailer(false);
-        } else {
-            setTrailer(true);
-        }
-    }
-    const { movies, query, handleClear } = props;
+    const { movies, query, handleClear, loadTrailer } = props;
     let filteredMovies = movies;
     const cased = query.toLowerCase();
     
@@ -27,7 +18,7 @@ function ResultsView(props) {
     return (
         <div className="results__wrapper">
             <div className="genre__header">
-                <IoArrowBack  onClick={handleClear} className="icon"/>
+                <IoArrowBack  onClick={handleClear} className="icon  mobile__only"/>
                  <h1 className="results__title">Search Results</h1> 
             </div>
             {filteredMovies.length === 0 ?
@@ -42,11 +33,9 @@ function ResultsView(props) {
                                 className="movie-row__item" 
                                 key={movie._id} 
                                 movie={movie}
-                                toggleTrailer={toggleTrailer}
-                                trailer={trailer}/>
+                                loadTrailer={loadTrailer}/>
                     )
                 })}
-                <div className="spacer"/>
             </div>}
         </div>
     )
