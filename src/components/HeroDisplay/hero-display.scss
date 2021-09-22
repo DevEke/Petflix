@@ -51,6 +51,15 @@
         }  
     }
 
+    .display-trailer {
+        background-color: $main-color;
+        color: white;
+        margin-top: 36px;
+        &:hover {
+            background-color: darken($main-color, 20%);
+        }
+    }
+
     .hero-display__rating {
         position: absolute;
         padding: 12px;

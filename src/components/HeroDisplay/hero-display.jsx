@@ -17,7 +17,7 @@ function HeroDisplay(props) {
                             <img className="hero-display__movie-logo" src={movie.logoURL} alt=""/>
                             <p className="hero-display__movie-description text">{movie.description}</p>
                         </div>
-                        <button onClick={() => loadTrailer(movie)} className="btn">
+                        <button onClick={() => loadTrailer(movie)} className="btn display-trailer">
                             <p>Play Trailer</p>
                             <IoPlay className="icon"/>
                         </button>
