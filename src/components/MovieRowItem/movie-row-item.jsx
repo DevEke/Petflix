@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import './movie-row-item.scss';
-import Trailer from '../Trailer/trailer';
-import {IoPlay} from 'react-icons/io5';
 
 function MovieRowItem(props) {
     const {movie , loadTrailer} = props;

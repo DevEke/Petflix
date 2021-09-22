@@ -12,7 +12,6 @@ import LoadingHome from '../LoadingHome/loading-home';
 import Trailer from '../Trailer/trailer';
 
 function HomeView(props) {
-    const [trailer, setTrailer] = useState(false);
     const [displayMovie, setDisplayMovie] = useState(undefined);
     const [query, setQuery] = useState('');
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -37,14 +36,6 @@ function HomeView(props) {
         setQuery('');
     }
 
-    function toggleTrailer() {
-        if (trailer) {
-            setTrailer(false);
-        } else {
-            setTrailer(true);
-        }
-    }
-
     function loadTrailer(movie) {
         setTrailerMovie(movie);
     }
@@ -59,10 +50,6 @@ function HomeView(props) {
         } else {
             setMobileMenu(true);
         }
-    }
-
-    function closeTrailer() {
-        setTrailer(false);
     }
 
     useEffect(() => {
@@ -83,7 +70,6 @@ function HomeView(props) {
                     handleClear={handleClear}
                     query={query}
                     setMovie={setMovie}
-                    closeTrailer={closeTrailer}
                     clearUser={clearUser}
                     handleSearch={handleSearch} />
                   {displayMovie === undefined ? 

@@ -4,21 +4,15 @@ import MovieRowItem from '../MovieRowItem/movie-row-item';
 import { Link } from 'react-router-dom';
 import {IoArrowForward, IoArrowBack} from 'react-icons/io5';
 import {useRef  , useEffect, useState} from 'react';
-import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 function MovieRow(props) {
     const {genre, movies, loadTrailer} = props;
-    const [movieLength, setMovieLength] = useState();
     const [count, setCount] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [windowWidth, setWindowWidth] =useState(window.innerWidth)
     const [calc, setCalc] = useState(scrollPosition/windowWidth)
 
     const ref = useRef();
-
-    const scroll = (scrollOffset) => {
-        ref.current.scrollLeft += scrollOffset;
-    }
 
     const leftScroll = (offset) => {
         setCount(count+1);

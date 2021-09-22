@@ -1,6 +1,5 @@
-import { useState } from 'react';
+
 import './result-item.scss';
-import Trailer from '../Trailer/trailer';
 
 function MovieRowItem(props) {
 

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { IoPlay} from 'react-icons/io5';
-import Trailer from '../Trailer/trailer';
 import './hero-display.scss';
 import LoadingHome from '../LoadingHome/loading-home';
 

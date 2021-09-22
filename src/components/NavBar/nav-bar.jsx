@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../img/petflix-logo.png';
-import { IoSearch, IoCaretDown, IoMenu, IoClose } from 'react-icons/io5';
+import { IoSearch, IoMenu, IoClose } from 'react-icons/io5';
 import './nav-bar.scss';
 
 
 function NavBar(props) {
     const [searchbar, setSearchbar] = useState(false);
-    const { clearUser, handleSearch, query, handleClear, toggleMenu} = props;
+    const { handleSearch, query, handleClear, toggleMenu} = props;
     
 
     function toggleSearch() {
