@@ -7,16 +7,20 @@ function MovieRowItem(props) {
 
     return (
             <>
-                <div 
+                <div
+                    onClick={() => loadTrailer(movie)} 
                     style={{backgroundImage: `url(${movie.posterURL})`}} 
                     className="result__item-mobile">
                 </div>
                 <div 
                     className="result__item"
                     onClick={() => loadTrailer(movie)}
-                    style={{backgroundImage: `url(${movie.backdropURL})`}}>
-                 <img src={`${movie.logoURL}`} alt="" className="movie-logo"/>       
+                    style={{backgroundImage: `url(${movie.posterURL})`}}>
                 </div>
+                <div className='result_info_container'>
+                    <p>{movie.title}</p>
+                    <p className='rating'>{movie.rating}</p>
+                </div>  
             </>
        
     )

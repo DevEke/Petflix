@@ -1,0 +1,195 @@
+@import '../../../petflix.scss';
+
+
+.favorites-view_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100%;
+    color: white;
+}
+
+.favorites-view_container {
+    flex: 1;
+    height: 100%;
+}
+
+.no_favorites {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+        margin: 0;
+        color: white;
+        font-weight: 700;
+        font-size: 36px;
+    }
+    p {
+        margin: 0;
+        color: white;
+        font-size: 18px;
+        opacity: .5
+    }
+
+    .icon {
+        color: white;
+        font-size: 48px;
+        margin-bottom: 12px;
+    }
+}
+
+
+.favorites_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+
+    li {
+        position: relative;
+    }
+}
+
+.favorites_loading {
+    border-radius: 10px;
+    position: relative;
+    height: 280px;
+    animation-name: loading;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+    0% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+.favorites-item {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    position: relative;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.7);
+    cursor: pointer;
+
+    .movie-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        max-width: 120px;
+        max-height: 50px;
+    }
+}
+
+.favorites-item_info_container {
+    position: relative;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 0;
+    align-items: center;
+    gap: 6px 12px;
+
+    .rating {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 6px 8px;
+        border-radius: 6px;
+        background-color: rgba(255,255,255,.2);;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1240px) and (min-width: 1024px) {
+
+}
+
+@media screen and (max-width: 1024px) and (min-width: 864px) {
+    .favorites-item {
+        height: 240px;
+    }
+
+    .favorites_loading {
+        height: 240px;
+    }
+
+    .favorites_grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .no_favorites {
+        h1 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 100px;
+
+        }
+    }
+}
+
+@media screen and (max-width: 864px) and (min-width: 425px) {
+    .favorites-item {
+        height: 270px;
+    }
+
+    .favorites_loading {
+        height: 270px;
+    }
+
+    .favorites_grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px;
+    }
+
+    .no_favorites {
+        h1 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 100px;
+
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .favorites-item {
+        height: 240px;
+    }
+
+    .favorites_loading {
+        height: 240px;
+    }
+
+    .favorites_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .no_favorites {
+        h1 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 100px;
+
+        }
+    }
+}

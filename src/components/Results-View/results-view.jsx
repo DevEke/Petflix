@@ -1,5 +1,5 @@
 import './results-view.scss';
-import { IoArrowBack } from 'react-icons/io5';
+import { IoArrowBack, IoPawOutline } from 'react-icons/io5';
 import ResultItem from '../ResultItem/result-item';
  
 
@@ -15,27 +15,31 @@ function ResultsView(props) {
     if (!movies) return null;
 
     return (
-        <div className="results__wrapper">
-            <div className="genre__header">
-                <IoArrowBack  onClick={handleClear} className="icon  mobile__only"/>
-                 <h1 className="results__title">Search Results</h1> 
+        <div className="results-wrapper">
+            <div className='results_header'>
+                <p> {filteredMovies.length !== 1 ? `${filteredMovies.length} results` : `${filteredMovies.length} result`}</p>
             </div>
-            {filteredMovies.length === 0 ?
-            <div className="no-results">
-                <h1>No Results</h1>
-                <p>Search Again</p>
-            </div> :
-            <div className="results-movie__wrapper">
-                {filteredMovies.map((movie) => {
-                    return (
-                        <ResultItem 
-                                className="movie-row__item" 
-                                key={movie._id} 
-                                movie={movie}
-                                loadTrailer={loadTrailer}/>
-                    )
-                })}
-            </div>}
+            <div className='results_list'>
+            {
+                filteredMovies.length < 1 ?
+                <div className='no-results-container'>
+                    <IoPawOutline className='icon'/>
+                    <h1>No Results</h1>
+                    <p>Try again.</p>
+                </div>
+                :
+                <ul className='results-container'>
+                    {
+                        filteredMovies.map((movie, idx) => {
+                            return (
+                                <li><ResultItem loadTrailer={loadTrailer} key={idx} movie={movie}/></li>
+                            )
+                        })
+                    }
+                </ul>
+            }
+            </div>
+           
         </div>
     )
 }

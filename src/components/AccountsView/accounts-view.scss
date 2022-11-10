@@ -1,0 +1,161 @@
+@import '../../petflix.scss';
+
+
+
+
+.accounts-view_container {
+    text-align: center;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .ww-grid {
+        display: flex;
+        padding: 36px 100px;
+        align-items: center;
+        justify-content: center;
+        gap: 120px 48px;
+        flex-wrap: wrap;
+    }
+    h1 {
+        font-size: 70px;
+    }
+}
+
+
+
+
+
+
+
+
+.account-item_wrapper {
+    cursor: pointer;
+    &:hover {
+        .account-backdrop {
+            border: 1px solid white;
+        }
+    }
+    .account-backdrop {
+        height: 200px;
+        width: 200px;
+        border-radius: 15px;
+        border: 1px solid #3a3a3a;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .initial {
+            font-size: 100px;
+        }
+        
+    }
+    h5 {
+        font-size: 30px;
+        
+        margin: 0;
+        margin-bottom: 8px;
+    }
+    p {
+        text-transform: capitalize;
+        font-size: 18px;
+        margin: 0;
+
+
+    }
+}
+
+
+@media screen and (max-width: 1240px) and (min-width: 1024px) {
+    .accounts-view_container {
+        h1 {
+            font-size: 50px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 1024px) and (min-width: 864px) {
+    .accounts-view_container {
+        h1 {
+            font-size: 40px;
+        }
+    }
+    .account-item_wrapper {
+        .account-backdrop {
+            height: 175px;
+            width: 175px;       
+        }
+    }
+
+}
+
+@media screen and (max-width: 864px) and (min-width: 425px)  {
+    .accounts-view_container {
+        .ww-grid {
+            padding: 36px 36px;
+            gap: 60px;
+        }
+        h1 {
+            font-size: 40px;
+        }
+    }
+    .account-item_wrapper {
+        .account-backdrop {
+            height: 150px;
+            width: 150px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        h5 {
+            font-size: 30px;
+            margin: 0;
+        }
+        p {
+            font-size: 18px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    .accounts-view_container {
+        .ww-grid {
+            padding: 36px 36px;
+            gap: 60px 30px;
+
+        }
+        h1 {
+            font-size: 24px;
+        }
+    }
+    .account-item_wrapper {
+        .account-backdrop {
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+            margin-bottom: 6px;
+            .img {
+                font-size: 28px;
+            }
+            .initial {
+                font-size: 48px;
+            }
+        }
+        h5 {
+            font-size: 24px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+
+}

@@ -1,103 +1,106 @@
-import NavBar from '../NavBar/nav-bar';
+import NavBar from '../NavBar/NavBar';
 import { useState, useEffect } from 'react';
-import HeroDisplay from '../HeroDisplay/hero-display';
-import { BrowserRouter as Router , Route } from 'react-router-dom';
 import './home-view.scss';
-import MovieRowList from '../MovieRowList/movie-row-list';
-import GenreView from '../GenreView/genre-view';
+import MovieRowList from './MovieScroll/MovieRowList/movie-row-list';
 import axios from 'axios';
 import ResultsView from '../Results-View/results-view';
-import MobileMenu from '../MobileMenu/mobile-menu';
-import LoadingHome from '../LoadingHome/loading-home';
-import Trailer from '../Trailer/trailer';
+import TopScroll from './TopScroll/TopScroll';
+import HeroDisplay from './HeroDisplay/HeroDisplay';
+import Footer from '../NavBar/Footer';
 
-function HomeView(props) {
+export default function HomeView({user, account, loadTrailer, clearTrailer, openMobileMenu}) {
     const [displayMovie, setDisplayMovie] = useState(undefined);
     const [query, setQuery] = useState('');
     const [mobileMenu, setMobileMenu] = useState(false);
-    const [trailerMovie, setTrailerMovie] = useState(undefined)
+    const [movies, setMovies] = useState([]);
+    const auth = localStorage.getItem('auth');
+    const token = localStorage.getItem('token');
 
-    function setMovie() {
+    axios.interceptors.request.use(req => {
+        req.headers.authorization = token;
+        return req;
+      });
+
+  const getMovies = () => {
+    console.log({message: 'Getting Movies...'})
+    axios.get('https://petflix.herokuapp.com/movies')
+    .then(res => {
+        setMovies(res.data.movies);
+    })
+    .catch(err => {
+        console.log(err.data)
+    })
+  }
+
+
+    const setMovie = () => {
         axios.get('https://petflix.herokuapp.com/movie')
             .then((response) => {
-                setDisplayMovie(response.data);
+                setDisplayMovie(response.data.movie);
             })
             .catch((error) => {
-                console.error(error);
-                console.log(error);
+                console.log(error.data);
             });
     }
-
-    function handleSearch(x) {
+    const handleSearch = (x) => {
         setQuery(x.target.value)
     }
-
-    function handleClear() {
+        
+    const handleClear = () => {
         setQuery('');
     }
 
-    function loadTrailer(movie) {
-        setTrailerMovie(movie);
-    }
-
-    function clearTrailer() {
-        setTrailerMovie(undefined)
-    }
-
-    function toggleMenu() {
-        if (mobileMenu) {
-            setMobileMenu(false);
-        } else {
-            setMobileMenu(true);
-        }
-    }
+    
 
     useEffect(() => {
-        setMovie();
+        getMovies()
+        setMovie()
+        if (!user, !account) {
+            clearTrailer();
+        }
     }, [])
-
-        const { movies, clearUser } = props;
-        return (
-            <div style={mobileMenu ? {overflowY: 'hidden'} : {overflowY: 'scroll'}} className="home__wrapper">
-            {trailerMovie !== undefined ?
-            <Trailer movie={trailerMovie} clearTrailer={clearTrailer} />:
-            null
-            }
-            <Router>
-                {mobileMenu ? <MobileMenu toggleMenu={toggleMenu}/> : null}
-                <NavBar
-                    toggleMenu={toggleMenu}
-                    handleClear={handleClear}
-                    query={query}
-                    setMovie={setMovie}
-                    clearUser={clearUser}
-                    handleSearch={handleSearch} />
-                  {displayMovie === undefined ? 
-                    <LoadingHome/> : 
-                <Route exact path="/" render={() => {
-                    if (query.length >= 1)  
-                    return <ResultsView 
-                                loadTrailer={loadTrailer} 
-                                handleClear={handleClear} 
-                                query={query} 
-                                movies={movies}/>;
-                    return (
-                        <div className="home-view__container">
-                        <HeroDisplay
-                            movie={displayMovie} 
-                            loadTrailer={loadTrailer} />
-                        <MovieRowList  
-                            loadTrailer={loadTrailer} 
-                            movies={movies} />
-                    </div> 
-                    ) 
-                }}/>
-            }
-                <Route path="/:genre" render={({match}) => <GenreView genre={match.params.genre} movies={movies}/>}/>
-            </Router>
+        
+    return (
+        <div className='home-wrapper'>
+            <NavBar
+                openMobileMenu={openMobileMenu} 
+                account={account}
+                query={query} 
+                handleSearch={(x)=> handleSearch(x)}
+                handleClear={() => handleClear()}
+            />
+            {
+            query === '' ?
+            <div className='scroll_container'>
+            <div className='home-container'>
+                <HeroDisplay
+                    movies={movies}
+                    loadTrailer={() => loadTrailer(displayMovie)} 
+                    setMovie={() => setMovie()} 
+                    displayMovie={displayMovie}
+                />
+                <TopScroll 
+                    loadTrailer={loadTrailer} 
+                    clearTrailer={() => clearTrailer()} 
+                    movies={movies}
+                />
+                <MovieRowList 
+                    movies={movies} 
+                    loadTrailer={loadTrailer} 
+                    clearTrailer={() => clearTrailer()}
+                />
             </div>
-        )
-    
+            </div> :
+            <div className='scroll_container'>
+                <ResultsView 
+                    movies={movies} 
+                    query={query} 
+                    loadTrailer={loadTrailer}
+                />
+            </div>
+            
+            }
+            <Footer/>
+        </div>
+    )
 }
-
-export default HomeView;

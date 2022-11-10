@@ -1,26 +1,27 @@
 import './mobile-menu.scss';
-import logo from '../../img/petflix-logo.png';
 import { Link } from 'react-router-dom';
-import { IoClose} from 'react-icons/io5';
+import { IoClose, IoExitOutline} from 'react-icons/io5';
 
 function MobileMenu(props) {
-    const {toggleMenu } = props;
+    const {toggleMenu, signOut } = props;
     return (
         <div className="mobile-menu__wrapper">
             <div className="mobile-menu">
                 <div className="mobile__header">
-                    <IoClose onClick={toggleMenu} className="icon"/>
-                    <img src={logo} className="logo" alt=""/>
+                    <p>Petflix</p>
+                <div onClick={toggleMenu} className='mobile-menu_close'>
+                   <IoClose className='icon'/> 
+                </div>
                 </div>
                 <div className="mobile-menu__links">
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/">Home</Link>
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/Animation">Animation</Link>
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/Family">Family</Link>
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/Drama">Drama</Link>
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/Action">Action</Link>
-                    <Link className="mobile-menu__link" onClick={toggleMenu} to="/Comedy">Comedy</Link>
+                    
                     <div className="mobile-menu__line"/>
-                    <Link className="mobile-menu__link" onClick={toggleMenu}>Sign Out of Petflix</Link>
+                    <button onClick={signOut} className='btn'>
+                        <div className='btn_contents'>
+                            <span>Sign Out</span>
+                            <IoExitOutline className='icon'/>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>

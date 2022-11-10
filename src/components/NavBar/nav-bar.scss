@@ -1,230 +1,180 @@
 @import '../../petflix.scss';
 
-.nav-bar__container {
-    background-image: linear-gradient(to bottom, rgba(0,0,0,.8), rgba(0,0,0,.0));
-    padding: 20px 8.5vw;
-    position: fixed;
+.navbar-wrapper {
+ display: flex;
+ justify-content: center;
+ height: 10vh;
+ border-bottom: 1px solid #3a3a3a;
+ flex-shrink: 0;
+}
+
+.footer-wrapper {
     width: 100%;
-    z-index: 9999;
-    color: white;
-
-    
-
-    .nav-bar__left-menu {
-
-        .mobile-hamburger__menu {
-            display: none;
-        }
-
-        .petflix-logo {
-            height: 36px;
-            cursor: pointer;
-            &:hover {
-                transform: scale(1.1,1.1);
-            }
-        }
-    }
-
-    .nav-bar__right-menu {
-        justify-content: flex-end;
-
-        .nav-bar__search-container {
-            position: relative;
-
-            .nav-bar__search-input {
-                background-color: rgba(255,255,255,.1);
-                padding: 8px 36px;
-                width: 400px;
-                border-radius: 3px;
-                border: none;
-                color: white;
-                &::placeholder {
-                    color: white;
-                }
-                &:focus {
-                    outline: none;
-                }
-            }
-            .clear-search {
-                font-size: 20px;
-                position: absolute;
-                display: none;
-                z-index: 9999;
-                left: calc(100% - 30px);
-                cursor: pointer;
-            }
-            .clear-shown {
-                display: block;
-            }
-            .nav-bar__icon {
-                margin: 0;
-                position: absolute;
-                left: calc(100% - 30px);
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-            .closed {
-                transform: translateX(10px);
-            }
-            
-            .open {
-                transform: translateX(-360px);
-                cursor: unset;
-            }
-        }
-
-        .nav-bar__profile-dropdown {
-            @include flex;
-            cursor: pointer;
-            position: relative;
-
-            .nav-bar__dropdown-menu {
-                position: absolute;
-                background-color: rgba(0,0,0,.8);
-                border-radius: 5px;
-                padding: 20px;
-                right: 0px;
-                top: 56px;
-                width: 250px;
-                visibility: hidden;
-                &:hover {
-                    visibility: visible;
-                }
-    
-                .nav-bar__dropdown-contents {
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-    
-                    .nav-bar__dropdown-pups-profile {
-                        margin-bottom: 20px;
-                        @include flex;
-                        cursor: pointer;
-    
-                        &:hover p {
-                            text-decoration: underline;
-                        }
-    
-                        .nav-bar__dropdown-pups-profile-pic {
-                            height: 32px;
-                            width: 32px;
-                            border-radius: 3px;
-                            background-image: url('../../img/pups-profile-img.svg');
-                            background-size: contain;
-                        }
-    
-                        p {
-                            margin-left: 10px;
-                            font-size: 14px;
-                        }
-                    }
-                    .nav-bar__dropdown-menu-line {
-                        height: 1px;
-                        width: 100%;
-                        background-color: lightgrey;
-                        margin: 0;
-                    }
-                    .nav-bar__dropdown-menu-link {
-                        margin: 20px 48px 0 0;
-                        font-size: 14px;
-                        &:first-of-type {
-                            margin-bottom: 0;
-                        }
-                        &:last-of-type {
-                            margin-bottom: 16px;
-                        }
-                    }
-    
-                    .nav-bar__dropdown-menu-caret {
-                        position: absolute;
-                        top: -40px;
-                        right: 14px;
-                    }
-                }
-            }
-
-            &:hover .nav-bar__caret {
-                transform: rotate(180deg);
-            }
-            &:hover .nav-bar__dropdown-menu {
-                visibility: visible;
-            }
-
-            
-
-            .nav-bar__profile-square {
-                height: 32px;
-                width: 32px;
-                border-radius: 3px;
-                background-image: url('../../img/user-profile-img.svg');
-                background-size: contain;
-            }
-
-            .nav-bar__caret {
-                margin-left: 10px;
-                height: 15px;
-                transition: transform 0.3s ease-in-out;
-            }
-
-            
-        }
-
-        
-
-    }
-        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    border-top: 1px solid #3a3a3a;
+    flex-shrink: 0;
 }
 
+.navbar-container {
+   padding: 12px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 70px;
+}
 
+.footer-container {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
 
-@media only screen and (max-width: 768px) {
-    .nav-bar__container {
-        padding: 15px 8.5vw;
-        z-index: 99999;
-        .nav-bar__left-menu {
-            .petflix-logo {
-                height: 30px;
-            }
+    .copyright {
+        margin: 0;
+        opacity: .5;
+        p {
+            font-weight: 400;
         }
+    }
+ }
+ 
+
+.navbar-logo {
+    .navbar-logo_text {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 24px;
+        margin: 0;
     }
 }
 
-@media only screen and (max-width: 425px) {
-    .nav-bar__container {
-        padding: 0 5vw;
-        height: 70px;
-        z-index: 99999;
-        .nav-bar__left-menu {
-            .mobile-hamburger__menu {
-                display: block;
-                margin-right: 16px;
-                font-size: 20px;
-                padding: 1px;
-            }
-            .petflix-logo {
-                display: none;
-            }
-        }
-        .nav-bar__right-menu {
-            .nav-bar__search-container {
-    
-                .nav-bar__search-input {
-                    background-color: rgba(255,255,255,.1);
-                    padding: 10px 36px;
-                    width: 280px;
-                    border-radius: 3px;
-                    border: none;
-                    color: white;
-                    &:focus {
-                        outline: none;
-                    }
-                }
-                .open {
-                    transform: translateX(-240px);
-                }
-            }
-        }
+.navbar-search {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px 0 40px;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    width: 100%;
+    &:hover {
+        border: 1px solid white;
     }
+
+    .search_input {
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: .75em;
+        font-size: 16px;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+       
+    }
+    .icon {
+        position: absolute;
+        font-size: 20px;
+        color: white;
+    }
+
+    .search_icon {
+        left: 12px;
+    }
+    .clear_icon {
+        right: 12px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+}
+
+.navbar-profile_icon{
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+    border: 1px solid #3a3a3a;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        opacity: .7;
+        border: 1px solid white;
+    }
+
+    .img {
+        color: white;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .initial {
+        font-size: 24px;
+    }
+}
+
+.navbar-menu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    .icon {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 1240px) and (min-width: 1024px) {
+    .navbar-container {
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 864px) {
+    .navbar-container {
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 864px) and (min-width: 425px) {
+    .navbar-container {
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .navbar-wrapper,
+    .footer-wrapper {
+        height: 8vh;
+    }
+
+    .navbar-container {
+        gap: 12px;
+    }
+    .footer-container {
+        justify-content: center;
+     }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    .navbar-profile_icon {
+        display: flex;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+
 
 }
